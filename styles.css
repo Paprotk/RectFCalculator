@@ -1,0 +1,155 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Hide scrollbar */
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+}
+
+.modal-content h3 {
+    margin: 5px 0; /* Adjust the top margin to reduce space */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    background-color: #1e1e1e; /* Slightly lighter dark background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+input[type="text"], input[type="number"], .custom-input {
+    width: 250px;
+    padding: 10px;
+    background-color: #333333; /* Dark background for inputs */
+    color: #ffffff; /* Light text color */
+    border: 1px solid #555555; /* Slight border for visibility */
+    border-radius: 4px;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, .custom-input:focus {
+    border-color: #888888; /* Lighter border on focus */
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #444444; /* Dark background for buttons */
+    color: #ffffff; /* Light text color */
+    border: 1px solid #666666; /* Border for visibility */
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #555555; /* Slightly lighter background on hover */
+}
+
+.input-display {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #cccccc; /* Lighter text color for display */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.modal-content input {
+    margin-bottom: 10px; /* Space below the input field */
+}
+
+.modal-content button {
+    display: block; /* Make buttons stack vertically */
+    width: 100%; /* Make buttons full width */
+    margin-top: 10px; /* Space above the buttons */
+}
+
+/* Modal Submit and Cancel Buttons */
+.modal-content button#modal-submit-btn {
+    background-color: #28a745; /* Green for Submit */
+    color: #ffffff; /* Light text color */
+    border: 1px solid #218838; /* Slight darker green border */
+}
+
+.modal-content button#modal-submit-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.modal-content button#modal-close-btn {
+    background-color: #dc3545; /* Red for Cancel */
+    color: #ffffff; /* Light text color */
+    border: 1px solid #c82333; /* Slight darker red border */
+}
+
+.modal-content button#modal-close-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+#modal-initial-close-btn {
+    display: none; /* Hide the cancel button */
+}
+
+/* Modal Submit button for initial area input */
+.modal-content button#modal-initial-submit-btn {
+    background-color: #007bff; /* Dark blue for Submit */
+    color: #ffffff; /* Light text color */
+    border: 1px solid #0056b3; /* Slight darker blue border */
+}
+
+.modal-content button#modal-initial-submit-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.modal.no-background {
+    background: transparent; /* Remove the dark background */
+}
+
+/* Alert Modal */
+.modal-content.alert {
+    background-color: #1e1e1e;
+}
+
+.modal-content.alert button {
+    background-color: #007bff; /* Blue for OK */
+}
+
+.modal-content.alert button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

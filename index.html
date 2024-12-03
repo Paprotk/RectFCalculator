@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RectF Calculator</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <label for="area-input">Area:</label>
+            <input type="text" id="area-input" readonly>
+            <span id="size-label">Size: </span>
+            <button id="change-size-btn">Change Size</button>
+        </div>
+
+        <div class="row">
+            <button id="up-btn">Move Up</button>
+            <button id="left-btn">Move Left</button>
+            <button id="down-btn">Move Down</button>
+            <button id="right-btn">Move Right</button>
+        </div>
+
+        <div class="input-display" id="input-display"></div>
+
+    </div>
+
+    <!-- Modal for custom input -->
+    <div class="modal" id="custom-input-modal">
+        <div class="modal-content">
+            <h3>Enter new value:</h3>
+            <input class="custom-input" type="text" id="modal-input">
+            <button id="modal-submit-btn">Submit</button>
+            <button id="modal-close-btn">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Modal for initial area input -->
+    <div class="modal" id="initial-area-modal">
+        <div class="modal-content">
+            <h3>Enter initial area:</h3>
+            <input class="custom-input" type="text" id="initial-area-input">
+            <button id="modal-initial-submit-btn">Submit</button>
+            <button id="modal-initial-close-btn">Cancel</button>
+        </div>
+    </div>
+    
+    <!-- Modal for displaying alerts -->
+    <div class="modal" id="alert-modal">
+        <div class="modal-content alert">
+            <h3 id="alert-message">Alert message goes here</h3>
+            <button id="alert-ok-btn">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>
