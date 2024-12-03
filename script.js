@@ -11,48 +11,55 @@ function showAlert(message) {
     const alertModal = document.getElementById('alert-modal');
     const alertMessage = document.getElementById('alert-message');
 
-    // Split the message into lines of max 40 characters without breaking words
+    // Przygotowanie tekstu z podziałem na linie
     const maxLineLength = 40;
     let formattedMessage = '';
     let currentLine = '';
 
-    // Split the message into words
     const words = message.split(' ');
 
-    // Iterate over words and construct lines
     words.forEach(word => {
-        // If adding the word exceeds the maxLineLength, break the current line and start a new one
         if (currentLine.length + word.length + 1 > maxLineLength) {
             formattedMessage += currentLine + '<br>';
-            currentLine = word;  // Start a new line with the current word
+            currentLine = word;
         } else {
-            // Add the word to the current line
-            if (currentLine) {
-                currentLine += ' ' + word;
-            } else {
-                currentLine = word;
-            }
+            currentLine = currentLine ? `${currentLine} ${word}` : word;
         }
     });
 
-    // Add the last line if there's any remaining text
     if (currentLine) {
         formattedMessage += currentLine;
     }
 
-    alertMessage.innerHTML = formattedMessage;  // Set the dynamic message with line breaks
-    alertModal.classList.add('no-background'); // Add the class to remove background darkening
-    alertModal.style.display = 'flex';    // Show the modal
+    // Ustaw wiadomość w oknie alertu
+    alertMessage.innerHTML = formattedMessage;
 
-    // Handle the OK button click to close the modal
+    // Pokaż modal z fade-in
+    alertModal.classList.remove('hide'); // Usuń klasę ukrywającą
+    alertModal.classList.add('show');   // Dodaj klasę pokazującą
+
+    alertModal.style.display = 'flex';  // Wyświetl modal
+
+    // Obsłuż przycisk "OK"
     document.getElementById('alert-ok-btn').onclick = () => {
-        alertModal.style.display = 'none';  // Hide the modal
-        alertModal.classList.remove('no-background'); // Remove the class when closing
+        // Rozpocznij animację fade-out
+        alertModal.classList.remove('show'); 
+        alertModal.classList.add('hide');
+
+        // Poczekaj na zakończenie animacji fade-out i ukryj modal
+        setTimeout(() => {
+            alertModal.style.display = 'none'; // Ukryj modal
+        }, 300); // Czas dopasowany do CSS (0.3s)
     };
 }
 
+
 function initializeArea() {
-    initialAreaModal.style.display = 'flex';
+    const initializeArea= document.getElementById('initial-area-modal');
+    initializeArea.classList.remove('hide'); // Usuń klasę ukrywającą
+    initializeArea.classList.add('show');   // Dodaj klasę pokazującą
+
+    initializeArea.style.display = 'flex';  // Wyświetl modal
     
     // Restrict input to numbers, commas, and spaces for the initial area modal
     initialAreaInputField.addEventListener('input', function(event) {
@@ -77,8 +84,16 @@ function initializeArea() {
 
             size = [area[2] - area[0], area[3] - area[1]];
             updateUI();
-            initialAreaModal.style.display = 'none';
+            // Rozpocznij animację fade-out
+            initializeArea.classList.remove('show'); 
+            initializeArea.classList.add('hide');
+
+            // Poczekaj na zakończenie animacji fade-out i ukryj modal
+            setTimeout(() => {
+            initializeArea.style.display = 'none'; // Ukryj modal
+            }, 300); // Czas dopasowany do CSS (0.3s)
             initialAreaInputField.value = '';
+        
 
         } catch (error) {
             showAlert("Invalid input: " + error.message);
