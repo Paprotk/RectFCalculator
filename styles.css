@@ -153,3 +153,65 @@ button:hover {
 .modal-content.alert button:hover {
     background-color: #0056b3; /* Darker blue on hover */
 }
+/* Dodaj kluczowe animacje fade-in i fade-out */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+#alert-modal {
+    display: none; /* Ukryty na początku */
+    opacity: 0;    /* Start z przezroczystością */
+    transition: opacity 0.3s ease; /* Przejście */
+}
+
+#alert-modal.show {
+    display: flex; /* Widoczny w momencie wywołania */
+    animation: fadeIn 0.3s ease forwards; /* Animacja fade-in */
+}
+
+#alert-modal.hide {
+    animation: fadeOut 0.3s ease forwards; /* Animacja fade-out */
+}
+
+#initial-area-modal {
+    display: none; /* Ukryty na początku */
+    opacity: 0;    /* Start z przezroczystością */
+    transition: opacity 0.3s ease; /* Przejście */
+}
+
+#initial-area-modal.show {
+    display: flex; /* Widoczny w momencie wywołania */
+    animation: fadeIn 0.3s ease forwards; /* Animacja fade-in */
+}
+
+#initial-area-modal.hide {
+    animation: fadeOut 0.3s ease forwards; /* Animacja fade-out */
+}
+#custom-input-modal {
+    display: none; /* Ukryty na początku */
+    opacity: 0;    /* Start z przezroczystością */
+    transition: opacity 0.3s ease; /* Przejście */
+}
+
+#custom-input-modal.show {
+    display: flex; /* Widoczny w momencie wywołania */
+    animation: fadeIn 0.3s ease forwards; /* Animacja fade-in */
+}
+
+#custom-input-modal.hide {
+    animation: fadeOut 0.3s ease forwards; /* Animacja fade-out */
+}
