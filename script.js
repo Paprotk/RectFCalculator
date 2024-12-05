@@ -107,7 +107,7 @@ function initializeArea() {
 }
 
 function updateUI() {
-    areaInputField.value = area.join(', ');
+    areaInputField.value = area.join(',');
     document.getElementById('size-label').textContent = `Size: ${size[0]}x${size[1]}`;
 }
 
@@ -126,7 +126,7 @@ function openModal(message, callback) {
 
     // Restrict the input to numbers only (no letters)
     modalInput.addEventListener('input', function(event) {
-        modalInput.value = modalInput.value.replace(/[^0-9x, ]/g, ''); // Allow only numbers, commas, spaces, and 'x'
+        modalInput.value = modalInput.value.replace(/[^0-9x,]/g, ''); // Allow only numbers, commas, spaces, and 'x'
     });
 
     document.getElementById('modal-submit-btn').onclick = () => {
