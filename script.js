@@ -75,7 +75,7 @@ function initializeArea() {
         }
 
         try {
-            area = areaInput.split(',').map(Number);
+            area = areaInput.split(',').map(s => Number(s.trim()));
 
             if (area.length !== 4) throw new Error("You must provide exactly 4 numbers.");
             if (area[2] <= area[0] || area[3] <= area[1]) {
