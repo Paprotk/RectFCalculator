@@ -37,8 +37,8 @@ function showAlert(message) {
     // Pokaż modal z fade-in
     alertModal.classList.remove('hide'); // Usuń klasę ukrywającą
     alertModal.classList.add('show');   // Dodaj klasę pokazującą
-
     alertModal.style.display = 'flex';  // Wyświetl modal
+
 
     // Obsłuż przycisk "OK"
     document.getElementById('alert-ok-btn').onclick = () => {
@@ -60,6 +60,7 @@ function initializeArea() {
     initializeArea.classList.add('show');   // Dodaj klasę pokazującą
 
     initializeArea.style.display = 'flex';  // Wyświetl modal
+	initialAreaInputField.focus(); 
     
     // Restrict input to numbers, commas, and spaces for the initial area modal
     initialAreaInputField.addEventListener('input', function(event) {
@@ -123,7 +124,7 @@ function openModal(message, callback) {
     modal.style.display = 'flex';
     modalInput.value = ''; // Clear the input field when the modal opens
     document.querySelector('.modal-content h3').textContent = message; // Set the dynamic message
-
+	modalInput.focus();
     // Restrict the input to numbers only (no letters)
     modalInput.addEventListener('input', function(event) {
         modalInput.value = modalInput.value.replace(/[^0-9x,]/g, ''); // Allow only numbers, commas, spaces, and 'x'
@@ -239,13 +240,92 @@ function moveArea(direction) {
     });
 }
 
+function showCopyFeedback(message, type) {
+    const feedbackElement = document.getElementById('copy-feedback');
+    
+    // Set the message and style based on the type (success/error)
+    feedbackElement.textContent = message;
+    feedbackElement.className = `copy-feedback ${type}`;
+
+    // Show the message and fade it out after 1.5 seconds
+    feedbackElement.style.opacity = 1;
+
+    // After 1.5 seconds, fade the message out
+    setTimeout(() => {
+        feedbackElement.style.opacity = 0;
+    }, 1000);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    // Existing code that initializes the area, updates the UI, and sets up event listeners
     initializeArea();
     updateUI();
 
+    // Button listeners for moving the area and changing the size
     document.getElementById('change-size-btn').addEventListener('click', changeSize);
     document.getElementById('up-btn').addEventListener('click', () => moveArea('up'));
     document.getElementById('down-btn').addEventListener('click', () => moveArea('down'));
     document.getElementById('left-btn').addEventListener('click', () => moveArea('left'));
     document.getElementById('right-btn').addEventListener('click', () => moveArea('right'));
+
+	
+document.getElementById('copy-btn').addEventListener('click', function() {
+    const areaInput = document.getElementById('area-input');
+    const icon = document.querySelector('.fa-regular'); // Target the icon
+
+    // Select the content inside the readonly input field
+    areaInput.select();
+    areaInput.setSelectionRange(0, 99999); // For mobile devices
+
+    // Try copying the content to the clipboard
+    try {
+        document.execCommand('copy'); // Fallback for older browsers
+
+        // Add the 'clicked' class to change the color to green
+        icon.classList.add('clicked');
+
+        // Revert back to the original color after 1.5 seconds
+        setTimeout(function() {
+            icon.classList.remove('clicked'); // Remove 'clicked' class
+        }, 1000); // 1.5 seconds
+
+        // Show success message
+        showCopyFeedback('Copied successfully!', 'success');
+    } catch (err) {
+        // Show error message if copying fails
+        showCopyFeedback('Failed to copy!', 'error');
+    }
+});
+
+
+
+    // Handle Enter and Escape keys for modals
+    document.addEventListener('keydown', (event) => {
+        if (document.getElementById('alert-modal').style.display === 'flex') {
+            if (event.key === 'Enter') {
+                document.getElementById('alert-ok-btn').click();
+            } else if (event.key === 'Escape') {
+                document.getElementById('alert-ok-btn').click();
+            }
+            return;
+        }
+        
+        // Handle Enter key for modals
+        if (modal.style.display === 'flex') {
+            if (event.key === 'Enter') {
+                document.getElementById('modal-submit-btn').click();
+            } else if (event.key === 'Escape') {
+                document.getElementById('modal-close-btn').click();
+            }
+        }
+        
+        // Handle Enter and Escape keys for the initial area modal
+        if (initialAreaModal.style.display === 'flex') {
+            if (event.key === 'Enter') {
+                document.getElementById('modal-initial-submit-btn').click();
+            } else if (event.key === 'Escape') {
+                return;
+            }
+        }
+    });
 });

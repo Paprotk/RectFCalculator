@@ -15,6 +15,8 @@ body {
     margin: 0;
     background-color: #121212; /* Dark background */
     color: #e0e0e0; /* Light text color */
+	font-family: 'Ubuntu', sans-serif; /* Apply the Ubuntu font */
+
 }
 
 .modal-content h3 {
@@ -30,12 +32,14 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+	border: 1px solid #333333;
 }
 
 .row {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: 15px;
 }
 
 input[type="text"], input[type="number"], .custom-input {
@@ -45,10 +49,13 @@ input[type="text"], input[type="number"], .custom-input {
     color: #ffffff; /* Light text color */
     border: 1px solid #555555; /* Slight border for visibility */
     border-radius: 4px;
+	outline: none;
+	transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
 input[type="text"]:focus, input[type="number"]:focus, .custom-input:focus {
     border-color: #888888; /* Lighter border on focus */
+	transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
 button {
@@ -58,11 +65,15 @@ button {
     color: #ffffff; /* Light text color */
     border: 1px solid #666666; /* Border for visibility */
     border-radius: 4px;
+    font-family: 'Ubuntu', sans-serif; /* Apply the Ubuntu font */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
 }
 
 button:hover {
     background-color: #555555; /* Slightly lighter background on hover */
+
 }
+
 
 .input-display {
     margin-top: 10px;
@@ -80,7 +91,10 @@ button:hover {
     background: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px); /* Apply blur effect to the background */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
     z-index: 1000;
+	border: 1px solid #333333;
 }
 
 .modal-content {
@@ -89,6 +103,7 @@ button:hover {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
     text-align: center;
+	border: 1px solid #333333;
 }
 
 .modal-content input {
@@ -147,7 +162,9 @@ button:hover {
 }
 
 .modal-content.alert button {
-    background-color: #007bff; /* Blue for OK */
+        background-color: #007bff; /* Dark blue for Submit */
+    color: #ffffff; /* Light text color */
+    border: 1px solid #0056b3; /* Slight darker blue border */
 }
 
 .modal-content.alert button:hover {
@@ -176,6 +193,7 @@ button:hover {
     display: none; /* Ukryty na początku */
     opacity: 0;    /* Start z przezroczystością */
     transition: opacity 0.3s ease; /* Przejście */
+
 }
 
 #alert-modal.show {
@@ -214,4 +232,47 @@ button:hover {
 
 #custom-input-modal.hide {
     animation: fadeOut 0.3s ease forwards; /* Animacja fade-out */
+}
+/* Style for the copy feedback message */
+.copy-feedback {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+    opacity: 0;  /* Start as invisible */
+    transition: opacity 1s ease-out; /* Smooth fade out transition */
+    z-index: 1100; /* Make sure it appears above other elements */
+}
+
+.copy-feedback.success {
+    background-color: #28a745; /* Green for success */
+}
+
+.copy-feedback.error {
+    background-color: #dc3545; /* Red for error */
+}
+#copy-btn{
+	background: none;
+	border: none;
+	margin-left: -50px;
+}
+.fa-regular{
+transform: scale(1.5);
+text-align: center;
+padding-right: 1px;
+padding-left: 1px;
+margin: 0 ;
+color: #777777;
+transition: color 0.3s ease;
+}
+.fa-regular:hover{
+	color: white;
+}
+.fa-regular.clicked {
+    color: #28a745; /* Change to green on click */
 }

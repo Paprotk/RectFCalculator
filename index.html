@@ -6,21 +6,28 @@
     <title>RectF Calculator</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
 </head>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 <body>
     <div class="container">
 
         <div class="row">
             <label for="area-input">Area:</label>
             <input type="text" id="area-input" readonly>
-            <span id="size-label">Size: </span>
-            <button id="change-size-btn">Change Size</button>
+				<button id="copy-btn"><i class="fa-regular fa-copy"></i></button>
+
+</button>
+		</div>
+		<div class="row">
+            				<span id="size-label">Size: </span>
+				<button id="change-size-btn"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Change Size</button>
         </div>
 
         <div class="row">
-            <button id="up-btn">Move Up</button>
-            <button id="left-btn">Move Left</button>
-            <button id="down-btn">Move Down</button>
-            <button id="right-btn">Move Right</button>
+            <button id="left-btn"><i class="fa-solid fa-arrow-left"></i> Move Left</button>
+			<button id="right-btn"><i class="fa-solid fa-arrow-right"></i> Move Right</button>
+			<button id="up-btn"><i class="fa-solid fa-arrow-up"></i> Move Up</button>
+			<button id="down-btn"><i class="fa-solid fa-arrow-down"></i> Move Down</button>
+			
         </div>
 
         <div class="input-display" id="input-display"></div>
@@ -32,8 +39,8 @@
         <div class="modal-content">
             <h3>Enter new value:</h3>
             <input class="custom-input" type="text" id="modal-input">
-            <button id="modal-submit-btn">Submit</button>
-            <button id="modal-close-btn">Cancel</button>
+            <button id="modal-submit-btn"><i class="fa-solid fa-check"></i> Submit</button>
+            <button id="modal-close-btn"><i class="fa-solid fa-xmark"></i> Cancel</button>
         </div>
     </div>
 
@@ -42,19 +49,21 @@
         <div class="modal-content">
             <h3>Enter initial area:</h3>
             <input class="custom-input" type="text" id="initial-area-input">
-            <button id="modal-initial-submit-btn">Submit</button>
+            <button id="modal-initial-submit-btn"><i class="fa-solid fa-check"></i> Submit</button>
             <button id="modal-initial-close-btn">Cancel</button>
         </div>
     </div>
     
     <!-- Modal for displaying alerts -->
-    <div class="modal" id="alert-modal">
-        <div class="modal-content alert">
-            <h3 id="alert-message">Alert message goes here</h3>
-            <button id="alert-ok-btn">OK</button>
+<div class="modal" id="alert-modal" style="display: none;">
+    <div class="modal-content alert">
+        <h3 id="alert-message">Alert message goes here</h3>
+        <button id="alert-ok-btn">OK</button>
         </div>
     </div>
-
+</div>
+<div id="copy-feedback" class="copy-feedback"></div>
     <script src="script.js"></script> <!-- Link to the JavaScript file -->
+	<script src="https://kit.fontawesome.com/e74c0ede07.js" crossorigin="anonymous"></script>
 </body>
 </html>
