@@ -107,7 +107,7 @@ function initializeArea() {
 }
 
 function updateUI() {
-    areaInputField.value = area.join(',');
+    areaInputField.value = area.join(', ');
     document.getElementById('size-label').textContent = `Size: ${size[0]}x${size[1]}`;
 }
 
