@@ -107,7 +107,7 @@ function initializeArea() {
 }
 
 function updateUI() {
-    areaInputField.value = area.join(',');
+    areaInputField.value = area.join(',').replace(/\s+/g, ''); // Remove any spaces
     document.getElementById('size-label').textContent = `Size: ${size[0]}x${size[1]}`;
 }
 
