@@ -63,7 +63,7 @@ function initializeArea() {
     
     // Restrict input to numbers, commas, and spaces for the initial area modal
     initialAreaInputField.addEventListener('input', function(event) {
-        initialAreaInputField.value = initialAreaInputField.value.replace(/[^0-9, ]/g, ''); // Allow only numbers, commas, and spaces
+        initialAreaInputField.value = initialAreaInputField.value.replace(/[^0-9,]/g, ''); // Allow only numbers, commas, and spaces
     });
 
     document.getElementById('modal-initial-submit-btn').onclick = () => {
